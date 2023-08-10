@@ -63,7 +63,7 @@ function h5p_report(array $config, string $lang, int $activityid, \stdClass $use
     }
 
     //Clicking on "Attemps report" inside an H5P, generated report_viewed event.
-    //But does not have any attemptid set. attemptid = null
+    //But does not have any attemptid set. AttempId = null
     if($attemptid !== null){
         $url = $config['app_url'].'/mod/h5pactivity/report.php?a=' . $activityid . '&userid=' . $userid. '&attemptid=' . $attemptid;
     }
