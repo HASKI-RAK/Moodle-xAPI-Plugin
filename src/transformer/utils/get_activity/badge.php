@@ -31,12 +31,12 @@ use Exception;
  *
  * @param array $config The transformer config settings.
  * @param int $badgeid The id of the badge.
- * @param int $badgehash The hash of the badge.
+ * @param string $badgehash The hash of the badge.
  * @param string $lang The language of the course.
  * @return array
  */
 
-function badge(array $config, int $badgeid, int $badgehash, string $lang): array {
+function badge(array $config, int $badgeid, string $badgehash, string $lang): array {
 
     try {
         $repo = $config['repo'];

@@ -46,11 +46,11 @@ function badge_viewed(array $config, \stdClass $event): array {
     $other = unserialize($event->other);
     if (!$other) {
         $other = json_decode($event->other);
-        $badgehash = (int)$other->badgehash;
+        $badgehash = $other->badgehash;
         $badgeid = (int)$other->badgeid;
     } else {
         $badgehash = $other['badgehash'];
-        $badgeid = $other['badgeid'];
+        $badgeid = (int)$other['badgeid'];
     }
     $lang = $config['source_lang'];
 
