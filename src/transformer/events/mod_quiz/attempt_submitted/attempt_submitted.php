@@ -71,7 +71,7 @@ function attempt_submitted(array $config, \stdClass $event): array {
             'userid' => $event->relateduserid
         ]);
 
-        $result = utils\get_attempt_result($attempt, $gradeitem, $attemptgrade);
+        $result = utils\get_attempt_result($config, $attempt, $gradeitem, $attemptgrade);
 
     } catch (Exception $e) {
         // OBJECT_NOT_FOUND.
