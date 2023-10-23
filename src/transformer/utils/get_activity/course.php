@@ -47,9 +47,6 @@ function course(array $config, \stdClass $course) {
               'name' => [
                   $courselang => $coursename,
               ],
-              'description' => [
-                  $courselang => $description,
-              ],
           ],
       ];
 

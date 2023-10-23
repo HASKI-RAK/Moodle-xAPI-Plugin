@@ -48,9 +48,6 @@ function site(array $config) {
             'name' => [
                 $sitelang => $sitename,
             ],
-            'description' => [
-                $sitelang => 'description of the site: ' . $description,
-            ],
         ],
     ];
 }

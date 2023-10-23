@@ -61,7 +61,6 @@ function course_module_instance_list_viewed(array $config, \stdClass $event): ar
             ],
         ],
         'object' => utils\get_activity\course_module_instance_list($config, $course, $coursemodule, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
@@ -75,6 +74,7 @@ function course_module_instance_list_viewed(array $config, \stdClass $event): ar
                     utils\get_activity\source($config),
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

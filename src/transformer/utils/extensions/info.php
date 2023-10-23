@@ -35,10 +35,10 @@ namespace src\transformer\utils\extensions;
  */
 function info(array $config, \stdClass $event) {
     return [
-        'http://lrs.learninglocker.net/define/extensions/info' => [
-            $config['source_url'] => $config['source_version'],
-            $config['plugin_url'] => $config['plugin_version'],
-            'event_name' => $event->eventname,
+        'https://wiki.haski.app/' => [
+            'domain' => $config['app_url'],
+            'domain_version' => $config['source_version'],
+            'github' => 'https://github.com/HASKI-RAK',
             'event_function' => $config['event_function'],
         ],
     ];
