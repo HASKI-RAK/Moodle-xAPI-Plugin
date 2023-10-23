@@ -44,13 +44,10 @@ function course_module_instance_list(array $config, \stdClass $course, string $c
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/collection-simple',
             'name' => [
                 $lang => 'list of module instances',
             ],
-            'description' => [
-                $lang => 'list of instances for the course module ' . $coursemodule,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/collection-simple',
         ],
     ];
 

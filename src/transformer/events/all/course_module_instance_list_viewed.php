@@ -55,7 +55,7 @@ function course_module_instance_list_viewed(array $config, \stdClass $event): ar
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/viewed',
+            'id' => 'https://wiki.haski.app/viewed',
             'display' => [
                 $lang => 'viewed'
             ],
@@ -66,12 +66,11 @@ function course_module_instance_list_viewed(array $config, \stdClass $event): ar
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config),
                 ]
             ],
         ],
