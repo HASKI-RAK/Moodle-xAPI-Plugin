@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (forum discussion post) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -60,10 +61,10 @@ function forum_discussion_post(array $config, int $discussionid, int $postid, in
     return [
         'id' => $posturl,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/forum-reply',
-            'description' => [
+            'name' => [
                 $lang => $description,
             ],
+            'type' => 'http://id.tincanapi.com/activitytype/forum-reply'
         ],
     ];
 }

@@ -17,8 +17,9 @@
 /**
  * Transformer for message deleted event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -55,23 +56,26 @@ function message_deleted(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/delete',
+            'id' => 'https://wiki.haski.app/delete',
             'display' => [
                 $lang => 'deleted'
             ],
         ],
         'object' => utils\get_activity\message($config, $lang, null, null),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'team' => utils\get_user($config, $recipient),
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, null),
             'contextActivities' => [
-                'category' => [
-                    utils\get_activity\source($config)
+                'parent' => [
+                    utils\get_activity\site($config)
+                ],
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

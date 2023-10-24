@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (course assignment) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -71,13 +72,10 @@ function course_assignment(array $config, string $lang, int $cmid, int $objectid
     $object = [
         'id' => $config['app_url'] . '/mod/assign/view.php?id=' . $cmid,
         'definition' => [
-            'type' => 'http://vocab.xapi.fr/activities/assignment',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://vocab.xapi.fr/activities/assignment'
         ],
     ];
 

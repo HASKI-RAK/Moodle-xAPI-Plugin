@@ -17,7 +17,7 @@
 /**
  * Swedish log store lang strings.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Martin Sandberg <martin.sandberg@xtractor.se>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving session report data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -98,13 +99,10 @@ function session_report(array $config, string $cmid, string $other, string $lang
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/review',
             'name' => [
                 $lang => 'session report',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/review'
         ],
     ];
 }

@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving entry data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -60,13 +61,10 @@ function entry(array $config, string $lang, int $entryid, int $cmid): array {
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/vocabulary-word',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/vocabulary-word'
         ],
     ];
 }

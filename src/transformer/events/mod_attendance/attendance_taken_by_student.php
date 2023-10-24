@@ -17,8 +17,9 @@
 /**
  * Transform for attendance taken by student event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -55,20 +56,18 @@ function attendance_taken_by_student(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://adlnet.gov/expapi/verbs/registered',
+            'id' => 'https://wiki.haski.app/registered',
             'display' => [
                 $lang => 'took attendance'
             ]
         ],
         'object' => utils\get_activity\attendance($config, $cmid, $event->other, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_module(
                         $config,
@@ -77,10 +76,11 @@ function attendance_taken_by_student(array $config, \stdClass $event): array {
                         'http://id.tincanapi.com/activitytype/lms/module'
                     )
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ]
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

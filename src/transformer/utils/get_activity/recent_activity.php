@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving recent activity data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -43,13 +44,10 @@ function recent_activity(array $config, \stdClass $course, string $lang): array 
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
               $lang => $name . ' recent activity',
             ],
-            'description' => [
-                $lang => 'the recent modules used in the course',
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 

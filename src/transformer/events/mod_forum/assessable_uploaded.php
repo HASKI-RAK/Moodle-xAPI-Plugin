@@ -17,8 +17,9 @@
 /**
  * Transformer for assessable uploaded event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -63,13 +64,12 @@ function assessable_uploaded(array $config, \stdClass $event): array {
     return[[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/add',
+            'id' => 'https://wiki.haski.app/add',
             'display' => [
                 $lang => 'uploaded'
             ],
         ],
         'object' => utils\get_activity\forum_assessable($config, $lang, $discussionid, $postid, $cmid),
-        'timestamp' => utils\get_event_timestamp($event),
         'result' => [
             'response' => utils\get_activity\forum_discussion_post_reply($config, $postid)
         ],
@@ -78,19 +78,19 @@ function assessable_uploaded(array $config, \stdClass $event): array {
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_forum($config, $course, $cmid),
                     utils\get_activity\course_discussion($config, $course, $discussionid, $cmid)
                 ],
+                'grouping' => [
+                    utils\get_activity\site($config)
+                ],
                 'other' => [
                     utils\get_activity\forum_discussion_post($config, $discussionid, $postid, $cmid, $lang)
-                ],
-                'category' => [
-                    utils\get_activity\source($config),
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

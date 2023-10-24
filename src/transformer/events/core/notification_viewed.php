@@ -17,8 +17,9 @@
 /**
  * Transform for notification viewed event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -49,25 +50,25 @@ function notification_viewed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/viewed',
+            'id' => 'https://wiki.haski.app/viewed',
             'display' => [
                 $lang => 'viewed'
             ],
         ],
         'object' => utils\get_activity\notification($config, $notificationid, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, null),
             'contextActivities' => [
+                'parent' => [
+                    utils\get_activity\site($config)
+                ],
                 'grouping' => [
                     utils\get_activity\site($config),
-                ],
-                'category' => [
-                    utils\get_activity\source($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event),
     ]];
 }

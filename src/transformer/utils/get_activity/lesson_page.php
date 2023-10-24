@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving lesson content page data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -69,13 +70,10 @@ function lesson_page(array $config, string $lang, int $cmid, int $pageid, string
     return [
         'id' => $url,
         'definition' => [
-            'type' => $type,
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => $type,
         ],
     ];
 }

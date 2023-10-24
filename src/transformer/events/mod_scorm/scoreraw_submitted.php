@@ -17,10 +17,11 @@
 /**
  * Transform for the scorm scoreraw submitted event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -73,21 +74,20 @@ function scoreraw_submitted(array $config, \stdClass $event) {
         'actor' => utils\get_user($config, $user),
         'verb' => utils\get_scorm_verb($scormscoestracks, $lang),
         'object' => utils\get_activity\course_scorm($config, $cmid, $scormid, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'result' => utils\get_scorm_result($scormscoestracks, $rawscore),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
-                    utils\get_activity\course($config, $course),
+                'parent' => [
+                    utils\get_activity\course($config, $course)
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

@@ -17,10 +17,11 @@
 /**
  * Transform for the totara program assigned event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -48,26 +49,26 @@ function program_assigned(array $config, \stdClass $event) {
     return[[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/assign',
+            'id' => 'https://wiki.haski.app/assign',
             'display' => [
                 $lang => 'assigned'
             ],
         ],
         'object' => utils\totara\program($config, $program, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event),
             'contextActivities' => [
+                'parent' => [
+                    utils\get_activity\site($config)
+                ],
                 'grouping' => [
                     utils\get_activity\site($config)
                 ],
-                'category' => [
-                    utils\get_activity\source($config)
-                ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event),
     ]];
 
 }

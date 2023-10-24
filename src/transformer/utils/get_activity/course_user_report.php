@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving course user report data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -49,13 +50,10 @@ function course_user_report(array $config, \stdClass $user, \stdClass $course, s
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/user-profile',
             'name' => [
                 $lang => 'course user report',
             ],
-            'description' => [
-                $lang => 'the user report for the course',
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/user-profile'
         ],
     ];
 

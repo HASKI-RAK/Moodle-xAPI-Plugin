@@ -22,7 +22,7 @@ require_once(__DIR__.'/Repository.php');
 /**
  * An abstraction of the Moodle Data Manipulation API.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>

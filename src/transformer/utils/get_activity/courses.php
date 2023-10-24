@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving courses data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -40,13 +41,10 @@ function courses(array $config, string $query, string $lang): array {
     return [
         'id' => $url,
             'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
                 $lang => 'list of courses',
             ],
-            'description' => [
-                $lang => 'the list of searched courses',
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 }

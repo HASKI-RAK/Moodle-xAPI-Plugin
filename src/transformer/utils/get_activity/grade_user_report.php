@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving grade user report data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -58,16 +59,13 @@ function grade_user_report(array $config, \stdClass $user, string $component, st
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/user-profile',
             'name' => [
                 $lang => $name,
             ],
             'extensions' => [
                 'https://moodle.org/xapi/extensions/user_id' => $userid,
             ],
-            'description' => [
-                $lang => 'the grade report of the actor',
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/user-profile'
         ],
     ];
 

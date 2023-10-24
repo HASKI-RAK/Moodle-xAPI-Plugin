@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (source) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -37,13 +38,10 @@ function source(array $config) {
     return [
         'id' => $config['source_url'],
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/source',
             'name' => [
                 $config['source_lang'] => $config['source_name'],
             ],
-            'description' => [
-                $config['source_lang'] => '',
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/source'
         ],
     ];
 }

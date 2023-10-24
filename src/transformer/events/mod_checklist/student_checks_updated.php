@@ -17,8 +17,9 @@
 /**
  * Transformer for student checks updated event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -55,32 +56,31 @@ function student_checks_updated(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/update',
+            'id' => 'https://wiki.haski.app/update',
             'display' => [
                 $lang => 'updated'
             ],
         ],
         'object' => utils\get_activity\checklist($config, $event->objectid, $user, $lang, $cmid),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_module(
                         $config,
                         $course,
                         $cmid,
                         'http://id.tincanapi.com/activitytype/checklist'
-                    ),
+                    )
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

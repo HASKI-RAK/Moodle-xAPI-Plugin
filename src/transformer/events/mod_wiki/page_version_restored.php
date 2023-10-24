@@ -17,8 +17,9 @@
 /**
  * Transformer for page version restored event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -57,20 +58,18 @@ function page_version_restored(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/return',
+            'id' => 'https://wiki.haski.app/return',
             'display' => [
                 $lang => 'restored'
             ],
         ],
         'object' => utils\get_activity\wiki_page_version($config, $pageid, $event->other, $lang, $action, $cmid),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_module(
                         $config,
@@ -79,10 +78,11 @@ function page_version_restored(array $config, \stdClass $event): array {
                         'http://vocab.xapi.fr/activities/collaborative-content'
                     )
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

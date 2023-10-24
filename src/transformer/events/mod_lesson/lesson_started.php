@@ -17,8 +17,9 @@
 /**
  * Transformer for lesson started event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -56,20 +57,18 @@ function lesson_started(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/start',
+            'id' => 'https://wiki.haski.app/start',
             'display' => [
                 $lang => 'started'
             ],
         ],
         'object' => utils\get_activity\lesson($config, $lessonid, $lang, $cmid),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_module(
                         $config,
@@ -78,10 +77,11 @@ function lesson_started(array $config, \stdClass $event): array {
                         'http://adlnet.gov/expapi/activities/lesson'
                     )
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

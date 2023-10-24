@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (course discussion) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -64,13 +65,10 @@ function course_discussion(array $config, \stdClass $course, int $discussionid, 
     return [
         'id' => $discussionurl,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/discussion',
             'name' => [
                 $courselang => $discussionname,
             ],
-            'description' => [
-                $courselang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/discussion'
         ],
     ];
 }

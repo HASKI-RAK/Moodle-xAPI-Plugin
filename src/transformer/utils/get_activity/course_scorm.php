@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (SCORM) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -59,13 +60,10 @@ function course_scorm(array $config, string $cmid, int $scormid, string $lang): 
     return [
         'id' => $config['app_url'].'/mod/scorm/view.php?id='.$cmid,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/legacy-learning-standard',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/legacy-learning-standard',
         ],
     ];
 }

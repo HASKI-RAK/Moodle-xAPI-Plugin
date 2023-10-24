@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving choice data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -79,14 +80,11 @@ function choice(array $config, int $cmid, string $lang, int $choiceid=null, int 
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
-            'interactionType' => 'choice',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
+            'interactionType' => 'choice',
         ],
     ];
 }

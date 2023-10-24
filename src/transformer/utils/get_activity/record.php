@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving record data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -58,13 +59,10 @@ function record(array $config, string $lang, int $recordid, int $databaseid, int
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/article',
             'name' => [
                 $lang => 'Database record',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/article'
         ],
     ];
 }

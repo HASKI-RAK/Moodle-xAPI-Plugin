@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving forum assessable data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -58,13 +59,10 @@ function forum_assessable(array $config, string $lang, int $discussionid, int $p
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://adlnet.gov/expapi/activities/assessment',
             'name' => [
                 $lang => 'Assessable',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://adlnet.gov/expapi/activities/assessment'
         ],
     ];
 }

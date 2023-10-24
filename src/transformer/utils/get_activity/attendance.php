@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving attendance data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -67,13 +68,10 @@ function attendance(array $config, string $cmid, string $other, string $lang): a
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://vocab.xapi.fr/activities/registration',
             'name' => [
                 $lang => 'Attendance',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://vocab.xapi.fr/activities/registration'
         ],
     ];
 }

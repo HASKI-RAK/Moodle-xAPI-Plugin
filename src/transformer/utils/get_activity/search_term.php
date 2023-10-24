@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving search term data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -42,13 +43,10 @@ function search_term(array $config, string $lang, \stdClass $course, string $ter
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/tag',
             'name' => [
                 $lang => 'term ' . $term,
             ],
-            'description' => [
-                $lang => 'the searched query',
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/tag'
         ],
     ];
 

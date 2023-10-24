@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving course resources list data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,13 +40,10 @@ function course_resources_list(array $config, \stdClass $course, string $lang): 
     $object = [
                   'id' => $config['app_url'].'/course/resources.php?id='.$course->id,
                   'definition' => [
-                      'type' => 'http://vocab.xapi.fr/activities/resources',
                       'name' => [
                           $lang => $name . ' resource list',
                       ],
-                      'description' => [
-                          $lang => 'the resource list of the course',
-                      ],
+                      'type' => 'http://vocab.xapi.fr/activities/resources'
                   ],
               ];
 

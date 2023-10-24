@@ -17,7 +17,7 @@
 /**
  * Transformer utility for retrieving the verb.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
@@ -43,7 +43,7 @@ function get_verb(string $verb, array $config, string $lang) {
     switch ($verb) {
         case 'completed':
             $output = [
-                'id' => 'http://adlnet.gov/expapi/verbs/completed',
+                'id' => 'https://wiki.haski.app/completed',
                 'display' => [
                     $lang => 'completed'
                 ],
@@ -98,7 +98,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'started':
             $output = [
-                'id' => 'http://activitystrea.ms/schema/1.0/start',
+                'id' => 'https://wiki.haski.app/start',
                 'display' => [
                     $lang => 'started'
                 ],
@@ -107,7 +107,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'submitted':
             $output = [
-                'id' => 'http://activitystrea.ms/schema/1.0/submit',
+                'id' => 'https://wiki.haski.app/submit',
                 'display' => [
                     $lang => 'submitted'
                 ],
@@ -116,7 +116,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'viewed':
             $output = [
-                'id' => 'http://id.tincanapi.com/verb/viewed',
+                'id' => 'https://wiki.haski.app/viewed',
                 'display' => [
                     $lang => 'viewed'
                 ],
@@ -134,7 +134,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'deleted':
             $output = [
-                'id' => 'http://activitystrea.ms/schema/1.0/delete',
+                'id' => 'https://wiki.haski.app/delete',
                 'display' => [
                     $lang => 'deleted'
                 ],

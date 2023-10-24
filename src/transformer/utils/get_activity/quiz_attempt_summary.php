@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving (quiz attempt) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -50,13 +51,10 @@ function quiz_attempt_summary(array $config, int $attemptid): array {
     return [
         'id' => $config['app_url'] . '/mod/quiz/summary.php?attempt=' . $attemptid,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/review',
             'name' => [
                 $lang => 'attempt summary',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/review'
         ],
     ];
 }

@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving the multichoice definition.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -78,10 +79,10 @@ function get_multichoice_definition(array $config, \stdClass $questionattempt,
     }
 
     return [
-        'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
         'name' => [
             $lang => utils\get_string_html_removed($question->questiontext),
         ],
+        'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
         'interactionType' => $interactiontype
     ];
 }

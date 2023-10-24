@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving the SCORM verb.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -44,21 +45,21 @@ function get_scorm_verb(array $scormscoestracks, string $lang) {
     switch ($scormstatus) {
         case 'failed':
             return [
-                'id' => 'http://adlnet.gov/expapi/verbs/failed',
+                'id' => 'https://wiki.haski.app/failed',
                 'display' => [
                     $lang => 'failed'
                 ],
             ];
         case 'passed':
             return [
-                'id' => 'http://adlnet.gov/expapi/verbs/passed',
+                'id' => 'https://wiki.haski.app/passed',
                 'display' => [
                     $lang => 'passed'
                 ],
             ];
         default:
             return [
-                'id' => 'http://adlnet.gov/expapi/verbs/completed',
+                'id' => 'https://wiki.haski.app/completed',
                 'display' => [
                     $lang => 'completed'
                 ],

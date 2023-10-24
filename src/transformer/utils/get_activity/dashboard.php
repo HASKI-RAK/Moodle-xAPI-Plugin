@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving dashboard data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -46,13 +47,10 @@ function dashboard(array $config, \stdClass $user, string $lang): array {
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
                 $lang => 'Dashboard',
             ],
-            'description' => [
-                $lang => 'customisable page for providing users with details of their progress and upcoming deadlines',
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 }

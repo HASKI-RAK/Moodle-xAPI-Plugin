@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving book data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -61,13 +62,10 @@ function book(array $config, int $bookid, int $cmid, string $lang): array {
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/book',
             'name' => [
                 $lang => 'book ' . $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/book',
         ],
     ];
 }

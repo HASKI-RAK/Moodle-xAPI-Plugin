@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving grade item data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -61,13 +62,10 @@ function grade_item(array $config, \stdClass $course, string $lang, int $itemid)
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://www.tincanapi.co.uk/activitytypes/grade_classification',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://www.tincanapi.co.uk/activitytypes/grade_classification'
         ],
     ];
 

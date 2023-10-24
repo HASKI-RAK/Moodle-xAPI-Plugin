@@ -17,10 +17,11 @@
 /**
  * Transform for the quiz attempt started event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -57,23 +58,20 @@ function attempt_started(array $config, \stdClass $event) {
         'actor' => utils\get_user($config, $user),
         'verb' => utils\get_verb('started', $config, $lang),
         'object' => utils\get_activity\quiz_attempt($config, $attemptid, $cmid),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'other' => [
-                    utils\get_activity\course_quiz($config, $course, $cmid),
+                'parent' => [
+                    utils\get_activity\course($config, $course),
+                    utils\get_activity\course_quiz($config, $course, $cmid)
                 ],
                 'grouping' => [
-                    utils\get_activity\site($config),
-                    utils\get_activity\course($config, $course),
-                ],
-                'category' => [
-                    utils\get_activity\source($config),
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

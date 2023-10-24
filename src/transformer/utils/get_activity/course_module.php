@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (course module) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -75,13 +76,10 @@ function course_module(array $config, \stdClass $course, int $cmid, string $xapi
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => $xapitype,
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => $xapitype,
         ],
     ];
 

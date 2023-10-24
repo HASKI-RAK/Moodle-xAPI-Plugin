@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving search results data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -38,13 +39,10 @@ function search_results(array $config, string $query, string $lang): array {
     return [
         'id' => $config['app_url'] . '/search/index.php?q=' . $query,
             'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
                 $lang => 'search results',
             ],
-            'description' => [
-                $lang => 'the results of the searched query',
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 }

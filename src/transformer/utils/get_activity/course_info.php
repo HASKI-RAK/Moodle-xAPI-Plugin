@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving course info data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -42,13 +43,10 @@ function course_info(array $config, \stdClass $course, string $lang): array {
     $object = [
         'id' => $config['app_url'].'/course/info.php?id='.$course->id,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
               $lang => 'course info for the course ' . $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page',
         ],
     ];
 

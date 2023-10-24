@@ -17,10 +17,11 @@
 /**
  * Transform for the facetoface signup success event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -54,7 +55,7 @@ function signup_success(array $config, \stdClass $event) {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://adlnet.gov/expapi/verbs/registered',
+            'id' => 'https://wiki.haski.app/registered',
             'display' => [
                 $lang => 'registered to'
             ],
@@ -65,20 +66,19 @@ function signup_success(array $config, \stdClass $event) {
             $event->contextinstanceid,
             'https://w3id.org/xapi/acrossx/activities/face-to-face-discussion'
         ),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
-                    utils\get_activity\course($config, $course),
+                'parent' => [
+                    utils\get_activity\course($config, $course)
                 ],
-                'category' => [
-                    utils\get_activity\source($config)
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

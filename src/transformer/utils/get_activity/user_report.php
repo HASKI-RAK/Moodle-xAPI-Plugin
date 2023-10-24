@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (user report) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -49,16 +50,13 @@ function user_report(array $config, \stdClass $user, \stdClass $course, string $
 
     $activity = [
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/user-profile',
             'name' => [
                 $courselang => 'forum posts of '.$fullname,
-            ],
-            'description' => [
-                $courselang => 'The report of the posts created by the actor',
             ],
             'extensions' => [
                 'https://moodle.org/xapi/extensions/user_id' => $userid,
             ],
+            'type' => 'http://id.tincanapi.com/activitytype/user-profile'
         ],
     ];
 

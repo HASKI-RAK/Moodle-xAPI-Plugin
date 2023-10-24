@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving user list data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,13 +42,10 @@ function user_list(array $config, \stdClass $course, string $lang): array {
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
                 $lang => 'list of users',
             ],
-            'description' => [
-                $lang => 'the list of users of the course ' . $course->id,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 

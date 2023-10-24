@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving assignment status data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -61,13 +62,10 @@ function assignment_status(array $config, int $cmid, int $assignid, \stdClass $u
     return [
         'id' => $config['app_url'] . '/mod/assign/view.php?id=' . $cmid,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/status-update',
             'name' => [
                 $lang => $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/status-update'
         ],
     ];
 }

@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving assignment submission data.
  *
- * @package   logstore_xapi
- * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ * @package   Moodle-xAPI-Plugin
+ * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -56,13 +57,10 @@ function assignment_submission(array $config, string $lang, int $cmid): array {
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://adlnet.gov/expapi/activities/assessment',
             'name' => [
                 $lang => 'Assignment submission',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://adlnet.gov/expapi/activities/assessment'
         ],
     ];
 }

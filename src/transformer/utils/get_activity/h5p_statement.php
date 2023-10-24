@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving h5p statement data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -66,14 +67,11 @@ function h5p_statement(array $config, string $lang, int $activityid, \stdClass $
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://www.tincanapi.co.uk/activitytypes/grade_classification',
-            'interactionType' => 'fill-in',
             'name' => [
                 $lang => 'statement for ' . $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://www.tincanapi.co.uk/activitytypes/grade_classification',
+            'interactionType' => 'fill-in'
         ],
     ];
 }

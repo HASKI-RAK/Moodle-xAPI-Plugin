@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving message data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -66,13 +67,10 @@ function message(array $config, string $lang, int $messageid=null, int $cmid=nul
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://id.tincanapi.com/activitytype/chat-message',
             'name' => [
                 $lang => 'Message',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://id.tincanapi.com/activitytype/chat-message'
         ],
     ];
 }

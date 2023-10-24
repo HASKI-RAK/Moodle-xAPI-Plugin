@@ -17,10 +17,11 @@
 /**
  * Transformer utility for retrieving (quiz attempt) activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -53,13 +54,10 @@ function quiz_attempt(array $config, int $attemptid, int $cmid): array {
     return [
         'id' => $config['app_url'].'/mod/quiz/attempt.php?attempt='.$attemptid.'&cmid='.$cmid,
         'definition' => [
-            'type' => 'http://adlnet.gov/expapi/activities/attempt',
             'name' => [
                 $lang => 'attempt',
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://adlnet.gov/expapi/activities/attempt'
         ],
     ];
 

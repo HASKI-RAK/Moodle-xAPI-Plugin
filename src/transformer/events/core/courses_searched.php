@@ -17,8 +17,9 @@
 /**
  * Transformer for courses searched event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -60,19 +61,19 @@ function courses_searched(array $config, \stdClass $event): array {
             ],
         ],
         'object' => utils\get_activity\courses($config, $query, $lang),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, null),
             'contextActivities' => [
-                'grouping' => [
+                'parent' => [
                     utils\get_activity\site($config)
                 ],
-                'category' => [
-                    utils\get_activity\source($config)
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

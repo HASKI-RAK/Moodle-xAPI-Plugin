@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving questionnaire attempt activities.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -62,13 +63,10 @@ function questionnaire_attempt(array $config, string $lang, int $cmid, int $ques
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://adlnet.gov/expapi/activities/attempt',
             'name' => [
                 $lang => 'attempt for ' . $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://adlnet.gov/expapi/activities/attempt'
         ],
 
     ];

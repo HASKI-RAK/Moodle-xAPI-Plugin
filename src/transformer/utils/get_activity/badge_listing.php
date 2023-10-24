@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving badge listing data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -43,13 +44,10 @@ function badge_listing(array $config, \stdClass $course, int $badgetype, string 
     $object = [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/page',
             'name' => [
                 $lang => 'list of badges',
             ],
-            'description' => [
-                $lang => 'Page that lists the available badges with their description',
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/page'
         ],
     ];
 

@@ -17,10 +17,11 @@
 /**
  * Transform for the quiz question (randomsamatch) answered event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -76,7 +77,7 @@ function randomsamatch(array $config, \stdClass $event, \stdClass $questionattem
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://adlnet.gov/expapi/verbs/answered',
+            'id' => 'https://wiki.haski.app/answered',
             'display' => [
                 $lang => 'answered'
             ],
@@ -84,17 +85,13 @@ function randomsamatch(array $config, \stdClass $event, \stdClass $questionattem
         'object' => [
             'id' => utils\get_quiz_question_id($config, $cmid, $questionid),
             'definition' => [
-                'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
                 'name' => [
                     $lang => $name
                 ],
+                'type' => 'http://adlnet.gov/expapi/activities/cmi.interaction',
                 'interactionType' => 'matching',
-                'description' => [
-                    $lang => $questiontext,
-                ],
             ]
         ],
-        'timestamp' => utils\get_event_timestamp($event),
         'result' => [
             'response' => $responsesummary,
             'completion' => $responsesummary !== '',
@@ -108,16 +105,16 @@ function randomsamatch(array $config, \stdClass $event, \stdClass $questionattem
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_quiz($config, $course, $cmid),
-                    utils\get_activity\quiz_attempt($config, $attemptid, $cmid),
+                    utils\get_activity\quiz_attempt($config, $attemptid, $cmid)
                 ],
-                'category' => [
-                    utils\get_activity\source($config),
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }

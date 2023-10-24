@@ -17,8 +17,9 @@
 /**
  * Transformer utility for retrieving chat sessions report data.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -60,13 +61,10 @@ function chat_sessions_report(array $config, int $cmid, string $lang, int $chati
     return [
         'id' => $url,
         'definition' => [
-            'type' => 'http://activitystrea.ms/schema/1.0/review',
             'name' => [
                 $lang => 'sessions report of ' . $name,
             ],
-            'description' => [
-                $lang => $description,
-            ],
+            'type' => 'http://activitystrea.ms/schema/1.0/review',
         ],
     ];
 }

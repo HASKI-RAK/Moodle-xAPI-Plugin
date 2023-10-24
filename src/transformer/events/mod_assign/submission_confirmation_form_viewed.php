@@ -17,8 +17,9 @@
 /**
  * Transform for submission confirmation form viewed event.
  *
- * @package   logstore_xapi
+ * @package   Moodle-xAPI-Plugin
  * @copyright 2023 Daniela Rotelli <danielle.rotelli@gmail.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -61,20 +62,18 @@ function submission_confirmation_form_viewed(array $config, \stdClass $event): a
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/viewed',
+            'id' => 'https://wiki.haski.app/viewed',
             'display' => [
                 $lang => 'viewed'
             ],
         ],
         'object' => utils\get_activity\course_assignment($config, $lang, $event->contextinstanceid, null, null, $assignid),
-        'timestamp' => utils\get_event_timestamp($event),
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
             'extensions' => utils\extensions\base($config, $event, $course),
             'contextActivities' => [
-                'grouping' => [
-                    utils\get_activity\site($config),
+                'parent' => [
                     utils\get_activity\course($config, $course),
                     utils\get_activity\course_module(
                         $config,
@@ -83,10 +82,11 @@ function submission_confirmation_form_viewed(array $config, \stdClass $event): a
                         'http://vocab.xapi.fr/activities/assignment'
                     )
                 ],
-                'category' => [
-                    utils\get_activity\source($config)
+                'grouping' => [
+                    utils\get_activity\site($config)
                 ]
             ],
-        ]
+        ],
+        'timestamp' => utils\get_event_timestamp($event)
     ]];
 }
