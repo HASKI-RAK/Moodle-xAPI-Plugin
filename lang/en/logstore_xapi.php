@@ -21,20 +21,22 @@
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['endpoint'] = 'Your LRS endpoint for the xAPI';
+$string['endpoint'] = 'LRS endpoint for the xAPI';
 $string['settings'] = 'General Settings';
 $string['xapifieldset'] = 'Custom example fieldset';
 $string['xapi'] = 'xAPI';
-$string['password'] = 'Your LRS basic auth secret/password for the xAPI';
+$string['password'] = 'Password for the xAPI';
+$string['auth'] = 'LRS auth key for the xAPI Authorization';
 $string['pluginadministration'] = 'Logstore xAPI administration';
 $string['pluginname'] = 'Logstore xAPI';
 $string['submit'] = 'Submit';
-$string['username'] = 'Your LRS basic auth key/username for the xAPI';
+$string['username'] = 'LRS basic auth username for the xAPI';
 $string['xapisettingstitle'] = 'Logstore xAPI Settings';
 $string['backgroundmode'] = 'Send statements by scheduled task?';
 $string['backgroundmode_desc'] = 'This will force Moodle to send the statements to the LRS in the background,
@@ -69,6 +71,7 @@ $string['routes'] = 'Include actions with these routes';
 $string['failed_events'] = 'event(s) have failed to send to the LRS.';
 $string['successful_events'] = 'event(s) have been successfully processed.';
 $string['filters'] = 'Filter logs';
+$string['apikeyauth'] = 'Use LRS auth key authentication instead of credentials';
 $string['logguests'] = 'Log guest actions';
 $string['filters_help'] = 'Enable filters that INCLUDE some actions to be logged.';
 $string['mbox'] = 'Identify users by email';
@@ -87,7 +90,6 @@ $string['resendfailedbatches'] = 'Resend failed batches';
 $string['resendfailedbatches_desc'] = 'When processing events in batches, try re-sending events in smaller batches if a batch fails. If not selected, the whole batch will not be sent in the event of a failed event.';
 $string['type'] = 'Type';
 $string['eventname'] = 'Event Name';
-$string['username'] = 'Username';
 $string['eventcontext'] = 'Event Context';
 $string['response'] = 'Response';
 $string['errortype'] = 'Error Type';

@@ -21,6 +21,7 @@
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,7 +42,17 @@ if ($hassiteconfig) {
     $settings->add(new admin_setting_configtext('logstore_xapi/password',
         get_string('password', 'logstore_xapi'), '', 'password', PARAM_TEXT));
 
+    // API Key authentication.
+    $settings->add(new admin_setting_configcheckbox('logstore_xapi/apikeyauth',
+        get_string('apikeyauth', 'logstore_xapi'), '', '0'));
+
+    $settings->add(new admin_setting_configtext('logstore_xapi/auth',
+        get_string('auth', 'logstore_xapi'), '', 'MmUzYzEw...', PARAM_TEXT));
+
     // Switch background batch mode on.
+    $separator = '<hr>';
+    $settings->add(new admin_setting_heading('separator', '', $separator));
+
     $settings->add(new admin_setting_configcheckbox('logstore_xapi/backgroundmode',
         get_string('backgroundmode', 'logstore_xapi'),
         get_string('backgroundmode_desc', 'logstore_xapi'), 1));

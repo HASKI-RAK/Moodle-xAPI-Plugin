@@ -21,6 +21,7 @@
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -49,8 +50,14 @@ function load(array $config, array $events) {
         $username = $config['lrs_username'];
         $password = $config['lrs_password'];
 
+        if (get_config('logstore_xapi', 'apikeyauth')==true){
+            $auth = $config['lrs_auth'];
+        }
+        else{
+            $auth = base64_encode($username.':'.$password);
+        }
+
         $url = utils\correct_endpoint($endpoint).'/statements';
-        $auth = base64_encode($username.':'.$password);
         $postdata = json_encode($statements);
 
         if ($postdata === false) {
@@ -61,7 +68,7 @@ function load(array $config, array $events) {
         $responsetext = $request->post($url, $postdata, [
             'CURLOPT_HTTPHEADER' => [
                 'Authorization: Basic '.$auth,
-                'X-Experience-API-Version: 1.0.0',
+                'X-Experience-API-Version: 1.0.3',
                 'Content-Type: application/json',
             ],
         ]);

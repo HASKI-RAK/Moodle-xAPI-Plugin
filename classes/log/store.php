@@ -280,6 +280,7 @@ class store extends php_obj implements log_writer {
                 'lrs_endpoint' => $this->get_config('endpoint', ''),
                 'lrs_username' => $this->get_config('username', ''),
                 'lrs_password' => $this->get_config('password', ''),
+                'lrs_auth' => $this->get_config('auth', ''),
                 'lrs_max_batch_size' => $this->get_max_batch_size(),
                 'lrs_resend_failed_batches' => $this->get_config('resendfailedbatches', false),
             ],
