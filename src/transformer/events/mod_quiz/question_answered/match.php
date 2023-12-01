@@ -77,7 +77,7 @@ function matching(array $config, \stdClass $event, \stdClass $questionattempt, \
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/answered',
+            'id' => 'https://wiki.haski.app/variables/xapi.answered',
             'display' => [
                 $lang => 'answered'
             ],

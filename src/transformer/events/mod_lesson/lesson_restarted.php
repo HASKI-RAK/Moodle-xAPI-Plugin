@@ -57,9 +57,9 @@ function lesson_restarted(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/start',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'restarted'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\lesson($config, $lessonid, $lang, $cmid),

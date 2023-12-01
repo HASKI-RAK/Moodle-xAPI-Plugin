@@ -94,7 +94,7 @@ function assignment_graded(array $config, \stdClass $event) {
 
     $statement = [
         'actor' => utils\get_user($config, $user),
-        'verb' => utils\get_verb('scored', $config, $lang),
+        'verb' => utils\get_verb('completed', $config, $lang),
         'object' => utils\get_activity\course_assignment($config, $lang, $event->contextinstanceid, $event->objectid,
             $event->objecttable, null),
         'result' => [

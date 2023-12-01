@@ -63,9 +63,9 @@ function readtracking_enabled(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/enabled',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'enabled readtracking in'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\forum($config, $lang, $forumid, $cmid),

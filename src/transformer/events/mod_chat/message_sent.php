@@ -56,9 +56,9 @@ function message_sent(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/send',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
-                $lang => 'sent'
+                $lang => 'created'
             ],
         ],
         'object' => utils\get_activity\message($config, $lang, $event->objectid, $cmid),

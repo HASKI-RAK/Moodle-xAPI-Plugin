@@ -57,9 +57,9 @@ function lesson_ended(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/terminated',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'ended'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\lesson($config, $lessonid, $lang, $cmid),

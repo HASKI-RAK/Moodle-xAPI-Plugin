@@ -62,9 +62,9 @@ function course_searched(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/search',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'searched'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\search_term($config, $lang, $course, $term),

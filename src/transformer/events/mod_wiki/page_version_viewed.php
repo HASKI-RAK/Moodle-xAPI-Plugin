@@ -58,9 +58,9 @@ function page_version_viewed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\wiki_page_version($config, $pageid, $event->other, $lang, $action, $cmid),

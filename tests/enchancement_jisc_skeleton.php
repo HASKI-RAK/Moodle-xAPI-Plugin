@@ -121,7 +121,7 @@ abstract class enchancement_jisc_skeleton extends \advanced_testcase {
         $record = (object)array(
             'eventname' => '\core\event\course_viewed',
             'component' => 'core',
-            'action' => 'viewed',
+            'action' => 'clicked',
             'target' => 'course',
             'crud' => 'r',
             'edulevel' => 2,

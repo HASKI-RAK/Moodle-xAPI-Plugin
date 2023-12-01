@@ -58,7 +58,7 @@ function numerical(array $config, \stdClass $event, \stdClass $feedbackvalue, \s
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/answered',
+            'id' => 'https://wiki.haski.app/variables/xapi.answered',
             'display' => [
                 $lang => 'answered'
             ],

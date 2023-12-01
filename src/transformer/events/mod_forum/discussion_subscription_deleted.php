@@ -65,7 +65,7 @@ function discussion_subscription_deleted(array $config, \stdClass $event): array
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/unregistered',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
                 $lang => 'unsubscribed from'
             ],

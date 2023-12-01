@@ -58,9 +58,9 @@ function page_version_restored(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/return',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'restored'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\wiki_page_version($config, $pageid, $event->other, $lang, $action, $cmid),

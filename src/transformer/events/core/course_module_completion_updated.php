@@ -55,7 +55,7 @@ function course_module_completion_updated(array $config, \stdClass $event) {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/completed',
+            'id' => 'https://wiki.haski.app/variables/xapi.completed',
             'display' => [
                 $lang => 'completed'
             ],

@@ -56,7 +56,7 @@ function attempt_abandoned(array $config, \stdClass $event) {
 
     return [[
         'actor' => utils\get_user($config, $user),
-        'verb' => utils\get_verb('started', $config, $lang),
+        'verb' => utils\get_verb('clicked', $config, $lang),
         'object' => utils\get_activity\quiz_attempt($config, $attemptid, $cmid),
         'context' => [
             'platform' => $config['source_name'],

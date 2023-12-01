@@ -56,9 +56,9 @@ function submission_assessed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/web-assessed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'assessed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\workshop_assessment($config, $lang, $event->objectid, $cmid),

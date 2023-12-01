@@ -64,10 +64,10 @@ function wiki_page_version(array $config, int $pageid, string $other, string $la
         case 'deleted':
             $url = $config['app_url'] . '/mod/wiki/admin.php?pageid=' . $pageid;
             break;
-        case 'restored':
+        case 'clicked':
             $url = $config['app_url'] . '/mod/wiki/view.php?pageid=' . $pageid;
             break;
-        case 'viewed':
+        case 'clicked':
             if (!$other) {
                 $other = json_decode($other);
                 $versionid = empty($other->versionid) ? '' : $other->versionid;

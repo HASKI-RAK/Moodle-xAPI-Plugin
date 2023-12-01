@@ -56,9 +56,9 @@ function search_results_viewed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\search_results($config, $query, $lang),

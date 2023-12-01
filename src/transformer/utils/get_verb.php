@@ -43,7 +43,7 @@ function get_verb(string $verb, array $config, string $lang) {
     switch ($verb) {
         case 'completed':
             $output = [
-                'id' => 'https://wiki.haski.app/completed',
+                'id' => 'https://wiki.haski.app/variables/xapi.completed',
                 'display' => [
                     $lang => 'completed'
                 ],
@@ -52,7 +52,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'loggedin':
             $output = [
-                'id' => 'https://brindlewaye.com/xAPITerms/verbs/loggedin/',
+                'id' => 'https://wiki.haski.app/variables/xapi.loggedin',
                 'display' => [
                     $lang => 'logged into'
                 ]
@@ -66,9 +66,9 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'loggedout':
             $output = [
-                'id' => 'https://brindlewaye.com/xAPITerms/verbs/loggedout/',
+                'id' => 'https://wiki.haski.app/variables/xapi.loggedout',
                 'display' => [
-                    $lang => 'logged out of'
+                    $lang => 'logged out'
                 ],
             ];
 
@@ -78,11 +78,11 @@ function get_verb(string $verb, array $config, string $lang) {
             }
             break;
 
-        case 'received':
+        case 'answered':
             $output = [
-                'id' => 'http://activitystrea.ms/schema/1.0/receive',
+                'id' => 'https://wiki.haski.app/variables/xapi.answered',
                 'display' => [
-                    $lang => 'received'
+                    $lang => 'answered'
                 ],
             ];
             break;
@@ -98,27 +98,27 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'started':
             $output = [
-                'id' => 'https://wiki.haski.app/start',
+                'id' => 'https://wiki.haski.app/variables/xapi.clicked',
                 'display' => [
                     $lang => 'started'
                 ],
             ];
             break;
 
-        case 'submitted':
+        case 'created':
             $output = [
-                'id' => 'https://wiki.haski.app/submit',
+                'id' => 'https://brindlewaye.com/xAPITerms/verbs/created',
                 'display' => [
-                    $lang => 'submitted'
+                    $lang => 'created'
                 ],
             ];
             break;
 
-        case 'viewed':
+        case 'clicked':
             $output = [
-                'id' => 'https://wiki.haski.app/viewed',
+                'id' => 'https://wiki.haski.app/variables/xapi.clicked',
                 'display' => [
-                    $lang => 'viewed'
+                    $lang => 'clicked'
                 ],
             ];
             break;
@@ -134,7 +134,7 @@ function get_verb(string $verb, array $config, string $lang) {
 
         case 'deleted':
             $output = [
-                'id' => 'https://wiki.haski.app/delete',
+                'id' => 'https://wiki.haski.app/variables/xapi.deleted',
                 'display' => [
                     $lang => 'deleted'
                 ],

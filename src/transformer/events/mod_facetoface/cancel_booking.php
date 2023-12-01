@@ -55,7 +55,7 @@ function cancel_booking(array $config, \stdClass $event) {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/unregistered',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
                 $lang => 'unregistered from'
             ],

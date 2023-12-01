@@ -56,7 +56,7 @@ function attendance_taken_by_student(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/registered',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
                 $lang => 'took attendance'
             ]

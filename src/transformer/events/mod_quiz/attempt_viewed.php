@@ -62,7 +62,7 @@ function attempt_viewed(array $config, \stdClass $event) {
 
     return [[
         'actor' => utils\get_user($config, $user),
-        'verb' => utils\get_verb('viewed', $config, $lang),
+        'verb' => utils\get_verb('clicked', $config, $lang),
         'object' => $object,
         'context' => [
             'platform' => $config['source_name'],

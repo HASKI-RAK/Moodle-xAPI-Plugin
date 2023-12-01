@@ -62,9 +62,9 @@ function submission_confirmation_form_viewed(array $config, \stdClass $event): a
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\course_assignment($config, $lang, $event->contextinstanceid, null, null, $assignid),

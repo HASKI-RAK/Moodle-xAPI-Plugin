@@ -56,9 +56,9 @@ function user_report_viewed(array $config, \stdClass $event) {
     $statement = [
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\user_report($config, $relateduser, $course, $lang),

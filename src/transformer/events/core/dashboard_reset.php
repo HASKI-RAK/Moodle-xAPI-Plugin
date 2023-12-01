@@ -49,9 +49,9 @@ function dashboard_reset(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/reset',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'reset'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\dashboard($config, $user, $lang),

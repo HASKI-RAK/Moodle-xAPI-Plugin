@@ -33,5 +33,5 @@ namespace src\transformer\events\mod_bigbluebuttonbn;
  */
 
 function activity_viewed(array $config, \stdClass $event): array {
-    return create_statement( $config, $event, 'http://id.tincanapi.com/verb/viewed', 'viewed' );
+    return create_statement( $config, $event, 'http://id.tincanapi.com/verb/viewed', 'clicked' );
 }

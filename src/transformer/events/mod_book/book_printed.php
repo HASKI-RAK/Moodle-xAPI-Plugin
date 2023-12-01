@@ -58,9 +58,9 @@ function book_printed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/read',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'print'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\book($config, $bookid, $cmid, $lang),

@@ -55,9 +55,9 @@ function signup_success(array $config, \stdClass $event) {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/registered',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
-                $lang => 'registered to'
+                $lang => 'created'
             ],
         ],
         'object' => utils\get_activity\course_module(

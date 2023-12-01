@@ -59,7 +59,7 @@ function get_scorm_verb(array $scormscoestracks, string $lang) {
             ];
         default:
             return [
-                'id' => 'https://wiki.haski.app/completed',
+                'id' => 'https://wiki.haski.app/variables/xapi.completed',
                 'display' => [
                     $lang => 'completed'
                 ],

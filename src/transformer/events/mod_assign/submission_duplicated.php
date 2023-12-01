@@ -58,9 +58,9 @@ function submission_duplicated(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/submit',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
-                $lang => 'duplicated'
+                $lang => 'created'
             ],
         ],
         'object' => utils\get_activity\course_assignment($config, $lang, $cmid, $objectid, $objecttable, null),

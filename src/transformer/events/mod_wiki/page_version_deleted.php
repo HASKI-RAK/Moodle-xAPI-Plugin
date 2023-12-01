@@ -58,7 +58,7 @@ function page_version_deleted(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/delete',
+            'id' => 'https://wiki.haski.app/variables/xapi.deleted',
             'display' => [
                 $lang => 'deleted'
             ],

@@ -49,7 +49,7 @@ function program_assigned(array $config, \stdClass $event) {
     return[[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/assign',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
                 $lang => 'assigned'
             ],

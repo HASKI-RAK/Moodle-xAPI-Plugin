@@ -50,7 +50,7 @@ function role_updated(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/update',
+            'id' => 'https://wiki.haski.app/variables/xapi.updated',
             'display' => [
                 $lang => 'updated'
             ],

@@ -66,9 +66,9 @@ function post_created(array $config, \stdClass $event): array {
     return[[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/replied',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
-                $lang => 'replied to'
+                $lang => 'created'
             ],
         ],
         'object' => utils\get_activity\course_discussion($config, $course, $discussionid, $cmid),

@@ -57,9 +57,9 @@ function statement_received(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://activitystrea.ms/schema/1.0/receive',
+            'id' => 'https://wiki.haski.app/variables/xapi.answered',
             'display' => [
-                $lang => 'received'
+                $lang => 'answered'
             ]
         ],
         'object' => utils\get_activity\h5p_statement($config, $lang, $activityid, $user, $cmid),

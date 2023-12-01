@@ -57,7 +57,7 @@ function choice_removed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/remove',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
                 $lang => 'removed'
             ],

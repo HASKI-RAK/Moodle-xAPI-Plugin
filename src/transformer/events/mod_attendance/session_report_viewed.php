@@ -56,9 +56,9 @@ function session_report_viewed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ]
         ],
         'object' => utils\get_activity\session_report($config, $cmid, $event->other, $lang),

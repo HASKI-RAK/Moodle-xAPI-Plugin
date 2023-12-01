@@ -162,7 +162,7 @@ function create_user_logged_out($table) {
  * @return void
  */
 function create_user_course_viewed($table) {
-    $str = "'\\core\\event\\course_viewed','core','viewed','course',NULL,NULL,'r',2,2,50,1,0,1,NULL,0,";
+    $str = "'\\core\\event\\course_viewed','core','clicked','course',NULL,NULL,'r',2,2,50,1,0,1,NULL,0,";
     $str .= "'N;'," . time() . ",'web','172.19.0.1',NULL,'0','0'";
 
     insert_row($table, $str);
@@ -188,7 +188,7 @@ function create_quiz_answered_question($table) {
  * @return void
  */
 function create_quiz_submitted($table) {
-    $str = "'\\mod_quiz\\event\\attempt_submitted','mod_quiz','submitted','attempt','quiz_attempts',2,'u',2,4946,70,6,3,7,3,0,";
+    $str = "'\\mod_quiz\\event\\attempt_submitted','mod_quiz','created','attempt','quiz_attempts',2,'u',2,4946,70,6,3,7,3,0,";
     $str .= "'a:2:{s:11:\"submitterid\";s:1:\"3\";s:6:\"quizid\";s:1:\"1\";}'," . time() . ",'web','172.19.0.1',NULL,'0','0'";
 
     insert_row($table, $str);
@@ -214,7 +214,7 @@ function create_forum_post($table) {
  * @return void
  */
 function create_assignment_submitted($table) {
-    $str = "'\\mod_assign\\event\\assessable_submitted','mod_assign','submitted','assessable','assign_submission',2,'u',";
+    $str = "'\\mod_assign\\event\\assessable_submitted','mod_assign','created','assessable','assign_submission',2,'u',";
     $str .= "2,4948,70,8,3,7,NULL,0,'a:1:{s:19:\"submission_editable\";b:1;}'," . time() . ",'web','172.19.0.1',NULL,'0','0'";
 
     insert_row($table, $str);

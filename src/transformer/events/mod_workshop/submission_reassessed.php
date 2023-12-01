@@ -56,7 +56,7 @@ function submission_reassessed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/web-assessed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
                 $lang => 'reassessed'
             ],

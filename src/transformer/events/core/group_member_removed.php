@@ -60,9 +60,9 @@ function group_member_removed(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/remove',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'has been removed from'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\group($config, $lang, $event->objectid),

@@ -71,7 +71,7 @@ function multichoicerated(array $config, \stdClass $event, \stdClass $feedbackva
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/answered',
+            'id' => 'https://wiki.haski.app/variables/xapi.answered',
             'display' => [
                 $lang => 'answered'
             ],

@@ -62,9 +62,9 @@ function role_assigned(array $config, \stdClass $event): array {
     return[[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/assign',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'has been assigned'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_role($config, $roleid, $lang),

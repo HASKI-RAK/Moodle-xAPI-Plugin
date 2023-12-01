@@ -53,7 +53,7 @@ function assignment_submitted(array $config, \stdClass $event) {
     $objectid = $event->objectid;
     $objecttable = $event->objecttable;
     $lang = utils\get_course_lang($course);
-    $verb = utils\get_verb('submitted', $config, $lang);
+    $verb = utils\get_verb('created', $config, $lang);
     if (utils\is_enabled_config($config, 'send_jisc_data')) {
         $verb = utils\get_verb('completed', $config, $lang);
     }

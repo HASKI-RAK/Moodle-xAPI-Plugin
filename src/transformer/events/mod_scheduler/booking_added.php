@@ -56,7 +56,7 @@ function booking_added(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/add',
+            'id' => 'https://wiki.haski.app/variables/xapi.uploaded',
             'display' => [
                 $lang => 'added'
             ],

@@ -63,9 +63,9 @@ function attempt_submitted(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/submit',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
-                $lang => 'submitted'
+                $lang => 'created'
             ],
         ],
         'object' => utils\get_activity\questionnaire_attempt($config, $lang, $cmid, $questionnaireid),

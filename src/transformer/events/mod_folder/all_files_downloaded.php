@@ -56,9 +56,9 @@ function all_files_downloaded(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/downloaded',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'downloaded'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\folder($config, $lang, $event->objectid, $cmid),

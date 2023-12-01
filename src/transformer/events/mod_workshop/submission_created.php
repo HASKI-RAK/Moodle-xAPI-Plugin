@@ -56,7 +56,7 @@ function submission_created(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/create',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
                 $lang => 'created'
             ],

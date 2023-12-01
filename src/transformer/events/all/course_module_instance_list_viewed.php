@@ -56,9 +56,9 @@ function course_module_instance_list_viewed(array $config, \stdClass $event): ar
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/viewed',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'viewed'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\course_module_instance_list($config, $course, $coursemodule, $lang),

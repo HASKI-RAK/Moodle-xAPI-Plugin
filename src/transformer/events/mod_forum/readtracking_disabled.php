@@ -63,9 +63,9 @@ function readtracking_disabled(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'http://id.tincanapi.com/verb/disabled',
+            'id' => 'https://wiki.haski.app/variables/xapi.clicked',
             'display' => [
-                $lang => 'disabled readtracking in'
+                $lang => 'clicked'
             ],
         ],
         'object' => utils\get_activity\forum($config, $lang, $forumid, $cmid),

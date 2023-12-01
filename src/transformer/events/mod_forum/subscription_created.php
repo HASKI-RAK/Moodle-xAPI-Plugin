@@ -63,7 +63,7 @@ function subscription_created(array $config, \stdClass $event): array {
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
-            'id' => 'https://wiki.haski.app/registered',
+            'id' => 'https://wiki.haski.app/variables/xapi.created',
             'display' => [
                 $lang => 'subscribed to'
             ],
