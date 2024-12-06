@@ -73,15 +73,31 @@ function statement_received(array $config, \stdClass $event): array {
 
         $scoreraw = (float) ($resultdata->rawscore ?? 0);
         $scoremax = (float) ($resultdata->maxscore ?? 0);
-        $duration = (float) ($resultdata->duration ?? 0);
+        $durationSeconds = (int) ($resultdata->duration ?? 0); // Duration in seconds
         $scaledscore = (float) ($resultdata->scaled ?? 0);
         $success = ($scoreraw >= $scoremax); // Define success criteria
+
+        // Convert duration to ISO 8601 format
+        $hours = intdiv($durationSeconds, 3600);
+        $minutes = intdiv($durationSeconds % 3600, 60);
+        $seconds = $durationSeconds % 60;
+
+        $duration = "PT";
+        if ($hours > 0) {
+            $duration .= "{$hours}H";
+        }
+        if ($minutes > 0) {
+            $duration .= "{$minutes}M";
+        }
+        if ($seconds > 0 || ($hours === 0 && $minutes === 0)) {
+            $duration .= "{$seconds}S";
+        }
 
     } catch (Exception $e) {
         // Default to no results
         $scoreraw = null;
         $scoremax = null;
-        $duration = null;
+        $duration = "PT0S"; // Default to 0 seconds if no duration
         $success = false;
         $scaledscore = null;
     }
@@ -100,9 +116,9 @@ function statement_received(array $config, \stdClass $event): array {
             'score' => [
                 'raw' => $scoreraw,
                 'max' => $scoremax,
-                'scaled' => $scaledscore,
-                'duration' => $duration
+                'scaled' => $scaledscore
             ],
+            'duration' => $duration,
             'completion' => true,
             'success' => $success
         ],
