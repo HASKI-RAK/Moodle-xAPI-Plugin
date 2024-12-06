@@ -37,6 +37,7 @@ use src\transformer\utils as utils;
  */
 
 function statement_received(array $config, \stdClass $event): array {
+    global $DB;
 
     $repo = $config['repo'];
     $userid = $event->userid;
@@ -44,16 +45,48 @@ function statement_received(array $config, \stdClass $event): array {
         $userid = 1;
     }
     $user = $repo->read_record_by_id('user', $userid);
+
     try {
         $course = $repo->read_record_by_id('course', $event->courseid);
     } catch (Exception $e) {
         // OBJECT_NOT_FOUND.
         $course = $repo->read_record_by_id('course', 1);
     }
+
     $activityid = $event->objectid;
     $cmid = $event->contextinstanceid;
     $lang = utils\get_course_lang($course);
 
+    // Fetch H5P results or scores
+    try {
+        $resultdata = $DB->get_record_sql(
+            "SELECT *
+                 FROM {h5pactivity_attempts}
+                 WHERE h5pactivityid = :activityid AND userid = :userid
+                 ORDER BY attempt DESC
+                 LIMIT 1",
+            [
+                'activityid' => $activityid,
+                'userid' => $userid
+            ]
+        );
+
+        $scoreraw = (float) ($resultdata->rawscore ?? 0);
+        $scoremax = (float) ($resultdata->maxscore ?? 0);
+        $duration = (float) ($resultdata->duration ?? 0);
+        $scaledscore = (float) ($resultdata->scaled ?? 0);
+        $success = ($scoreraw >= $scoremax); // Define success criteria
+
+    } catch (Exception $e) {
+        // Default to no results
+        $scoreraw = null;
+        $scoremax = null;
+        $duration = null;
+        $success = false;
+        $scaledscore = null;
+    }
+
+    // Build the xAPI statement
     return [[
         'actor' => utils\get_user($config, $user),
         'verb' => [
@@ -63,6 +96,16 @@ function statement_received(array $config, \stdClass $event): array {
             ]
         ],
         'object' => utils\get_activity\h5p_statement($config, $lang, $activityid, $user, $cmid),
+        'result' => [
+            'score' => [
+                'raw' => $scoreraw,
+                'max' => $scoremax,
+                'scaled' => $scaledscore,
+                'duration' => $duration
+            ],
+            'completion' => true,
+            'success' => $success
+        ],
         'context' => [
             'platform' => $config['source_name'],
             'language' => $lang,
@@ -85,3 +128,4 @@ function statement_received(array $config, \stdClass $event): array {
         'timestamp' => utils\get_event_timestamp($event)
     ]];
 }
+
