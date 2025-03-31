@@ -67,12 +67,9 @@ function attempt_submitted(array $config, \stdClass $event): array {
             'itemmodule' => 'quiz',
             'iteminstance' => $quizid,
         ]);
-        $attemptgrade = $repo->read_record('grade_grades', [
-            'itemid' => $gradeitem->id,
-            'userid' => $event->relateduserid
-        ]);
+        $quiz = $repo->read_record_by_id('quiz', $quizid);
 
-        $result = utils\get_attempt_result($config, $attempt, $gradeitem, $attemptgrade);
+        $result = utils\get_attempt_result($config, $attempt, $gradeitem, $quiz);
 
     } catch (Exception $e) {
         // OBJECT_NOT_FOUND.

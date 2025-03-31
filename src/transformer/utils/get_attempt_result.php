@@ -21,6 +21,7 @@
  * @copyright Jerret Fowler <jerrett.fowler@gmail.com>
  *            Ryan Smith <https://www.linkedin.com/in/ryan-smith-uk/>
  *            David Pesce <david.pesce@exputo.com>
+ *            Dimitri Bigler <dimitri.bigler@hs-kempten.de>
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -35,11 +36,11 @@ namespace src\transformer\utils;
  * @param \stdClass $attemptgrade The attemptgrade object.
  * @return array
  */
-function get_attempt_result(array $config, \stdClass $attempt, \stdClass $gradeitem, \stdClass $attemptgrade) {
-    $gradesum = floatval(isset($attemptgrade->rawgrade) ? $attemptgrade->rawgrade : 0);
+function get_attempt_result(array $config, \stdClass $attempt, \stdClass $gradeitem, \stdClass $quiz) {
+    $gradesum = floatval($attempt->sumgrades ? : 0);
 
     $minscore = floatval($gradeitem->grademin ?: 0);
-    $maxscore = floatval($gradeitem->grademax ?: 0);
+    $maxscore = floatval($quiz->sumgrades ?: 0);
     $passscore = floatval($gradeitem->gradepass ?: 0);
 
     $rawscore = cap_raw_score($gradesum, $minscore, $maxscore);
